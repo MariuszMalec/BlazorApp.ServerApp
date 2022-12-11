@@ -1,0 +1,47 @@
+﻿@page "/users"
+@using BlazorApp.Logic
+@using BlazorApp.Logic.Services;
+@using BlazorApp.Logic.Interfaces;
+@inject IPersonService UserService
+
+<h3>Users</h3>
+
+<p>This component demonstrates data from a BlazorApp.Logic service.</p>
+
+@{
+    var userService = new UserService();
+    var users = UserService.GetAll();
+}
+
+@if ( !users.Any())
+{
+        <p><em>Loading...</em></p>
+}
+else
+{
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>CreatedAt</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var user in users)
+            {
+                        <tr>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                            <td>@user.Email</td>
+                            <td>@user.CreatedAt</td>
+                        </tr>
+            }
+            </tbody>
+        </table>
+}
+
+@code {
+
+}
