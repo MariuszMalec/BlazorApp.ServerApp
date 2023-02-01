@@ -9,7 +9,7 @@
 <p>Blazor CRUD operation</p>
 <div class="row">
     <div class="col-md-6">
-        <a href='/user/add' class="btn btn-primary" role="button">
+        <a href='/useradd' class="btn btn-primary" role="button">
             <i class="fas fa-user-plus"></i>
             Add User
         </a>
@@ -54,10 +54,10 @@ else
                     <td>@user.PhoneNumber</td>
                     <td>@user.Email</td>
                     <td>
-                        <a href='/user/edit/@user.Id' class="btn btn-outline-dark" role="button">
+                        <a href='/useredit/@user.Id' class="btn btn-outline-dark" role="button">
                             Edit
                         </a>
-                        <a href='/user/delete/@user.Id' class="btn btn-outline-danger" role="button">
+                        <a href='/userdelete/@user.Id' class="btn btn-outline-danger" role="button">
                             Delete
                         </a>
                     </td>
