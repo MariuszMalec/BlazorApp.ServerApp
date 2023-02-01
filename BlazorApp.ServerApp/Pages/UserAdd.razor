@@ -1,5 +1,5 @@
-﻿@page "/useradd"
-@page "/useredit/{Id:int}"
+﻿@page "/user/add"
+@page "/user/edit/{Id:int}"
 @using BlazorApp.Logic
 @using BlazorApp.Logic.Entities;
 @using BlazorApp.Logic.Services;
@@ -55,7 +55,6 @@
             Title = "Edit";
             user = UserService.GetById(Id);
         }
-        //NavigationManager.NavigateTo("/userdetails");
     }
     protected async Task SaveUser()
     {
