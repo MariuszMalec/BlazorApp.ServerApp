@@ -4,6 +4,10 @@ namespace BlazorApp.Logic.Entities
 {
     public class Person : Entity
     {
+        [Required(ErrorMessage = "Please provide first name")]
+        [MinLength(2)]
+        [MaxLength(28)]
+        [Display(Name = "First name")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please provide last name")]

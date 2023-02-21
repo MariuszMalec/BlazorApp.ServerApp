@@ -39,7 +39,7 @@
         <ValidationMessage For="@(() => user.Email)" />
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" @onclick="SaveUser" class="btn btn-primary">Save</button>
         <button class="btn btn-light" @onclick="Cancel">Cancel</button>
     </div>
 </EditForm>

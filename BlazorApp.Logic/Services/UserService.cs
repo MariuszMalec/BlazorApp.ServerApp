@@ -31,6 +31,11 @@ namespace BlazorApp.Logic.Services
             var currentUser = GetById(id);
             currentUser.FirstName = user.FirstName;
             currentUser.LastName = user.LastName;
+            currentUser.Address = user.Address;
+            currentUser.AddressCorrespondence = user.AddressCorrespondence;
+            currentUser.Email = user.Email;
+            currentUser.PhoneMobile = user.PhoneMobile;
+            currentUser.PhoneNumber = user.PhoneNumber;
             return true;
         }
     }
