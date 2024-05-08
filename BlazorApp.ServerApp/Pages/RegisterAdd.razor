@@ -67,11 +67,12 @@
         else
         {
             //UserService.Create(user);
+            AccountService.Register(client);
         }
         Cancel();
     }
     public void Cancel()
     {
-        NavigationManager.NavigateTo("/userdetails");
+        NavigationManager.NavigateTo("/clientdetails");
     }
 }

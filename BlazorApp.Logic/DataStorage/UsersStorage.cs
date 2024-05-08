@@ -1,4 +1,5 @@
 ﻿using BlazorApp.Logic.Entities;
+using BlazorApp.Logic.Models;
 
 namespace BlazorApp.Logic.DataStorage
 {
@@ -10,6 +11,10 @@ namespace BlazorApp.Logic.DataStorage
             new User {Id=2, FirstName = "Sebastian", LastName = "Malec" , Address="Dabkowo", AddressCorrespondence="",Email="sm@example.com", PhoneMobile=null, PhoneNumber="552391376"},
             new User {Id=3, FirstName = "Basia", LastName = "Malec" , Address="Sadkowo", AddressCorrespondence="",Email="bm@example.com", PhoneMobile=null, PhoneNumber="552391376"},
             new User {Id=4, FirstName = "Maniek", LastName = "Staniek" , Address="Stankowo", AddressCorrespondence="",Email="ms@example.com", PhoneMobile=null, PhoneNumber="552391376"}
+        };
+        public static List<Client> Clients = new List<Client>
+        {
+            new Client {Id=1,FirstName="admin",LastName="admin", Email="admin@example.com", DataOfBirth=DateTime.Now, Nationality="polish", PasswordHash="admin", RoleId=1}
         };
     }
 }
