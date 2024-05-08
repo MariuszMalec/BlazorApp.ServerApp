@@ -1,0 +1,71 @@
+﻿@page "/account"
+@using BlazorApp.Logic
+@using BlazorApp.Logic.Entities;
+@using BlazorApp.Logic.Services;
+@using BlazorApp.Logic.Interfaces;
+@inject IPersonService UserService
+@*@inject HttpClient Http*@
+<h1>Account</h1>
+<p>Register and Login operation</p>
+<div class="row">
+    <div class="col-md-1">
+        <a href='/register/add' class="btn btn-primary" role="button">
+            <i class="fas fa-user-plus"></i>
+            Register
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href='/user/add' class="btn btn-primary" role="button">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Login
+        </a>
+    </div>
+</div>
+<br />
+@if (userList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+}
+@code {
+    protected List<User> userList = new();
+    protected List<User> searchUserData = new();
+    protected User user = new();
+    protected string SearchString { get; set; } = string.Empty;
+    protected override async Task OnInitializedAsync()
+    {
+        GetUser();
+    }
+    protected void GetUser()
+    {
+        var userService = new UserService();
+        userList = UserService.GetAll().ToList();
+        searchUserData = userList;
+
+    }
+    protected void FilterUser()
+    {
+        if (!string.IsNullOrEmpty(SearchString))
+        {
+            userList = searchUserData
+                .Where(x => x.LastName.IndexOf(SearchString, StringComparison.OrdinalIgnoreCase) != -1)
+                .ToList();
+        }
+        else
+        {
+            userList = searchUserData;
+        }
+    }
+    protected void DeleteConfirm(int userID)
+    {
+        user = userList.FirstOrDefault(x => x.Id == userID);
+    }
+    public void ResetSearch()
+    {
+        SearchString = string.Empty;
+        userList = searchUserData;
+    }
+}
