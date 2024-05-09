@@ -6,7 +6,7 @@
 @using BlazorApp.Logic.Services;
 @using BlazorApp.Logic.Interfaces;
 @using BlazorApp.Logic.DataStorage;
-@inject IRepository<User> UserService
+@inject IRepository<ClientDto> UserService
 @*@inject HttpClient Http*@
 <h1>Client Data</h1>
 <p>Blazor CRUD operation</p>
@@ -81,18 +81,19 @@ else
     }
     protected void GetUser()
     {
-        var clients = UsersStorage.Clients.ToList();
-        //mapowanie
-        foreach (var client in clients)
-        {
-            userList.Add(new ClientDto() {
-                Id=client.Id, 
-                LastName = client.LastName, 
-                Email = client.Email,
-                DataOfBirth=client.DataOfBirth,
-                Nationality=client.Nationality
-            });
-        }
+        // var clients = UsersStorage.Clients.ToList();
+        // //mapowanie
+        // foreach (var client in clients)
+        // {
+        //     userList.Add(new ClientDto() {
+        //         Id=client.Id, 
+        //         LastName = client.LastName, 
+        //         Email = client.Email,
+        //         DataOfBirth=client.DataOfBirth,
+        //         Nationality=client.Nationality
+        //     });
+        // }
+        userList = UserService.GetAll().ToList();
         searchUserData = userList;
 
     }

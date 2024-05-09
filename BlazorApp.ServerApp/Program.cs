@@ -14,6 +14,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddTransient<IRepository<User>, UserService>();
+builder.Services.AddTransient<IRepository<ClientDto>, ClientService>();
 builder.Services.AddSingleton<IAccountService, AccountService>();
 builder.Services.AddSingleton<IPasswordHasher<Client>, PasswordHasher<Client>>();//uzyjemy tego do hashowania hasel
 
