@@ -1,9 +1,10 @@
 ﻿@page "/user/delete/{Id:int}"
 @using BlazorApp.Logic
 @using BlazorApp.Logic.Entities;
+@using BlazorApp.Logic.Repositories
 @using BlazorApp.Logic.Services;
 @using BlazorApp.Logic.Interfaces;
-@inject IPersonService UserService
+@inject IRepository<User> UserService
 @inject NavigationManager NavigationManager
 <h2>Delete User</h2>
 <br />

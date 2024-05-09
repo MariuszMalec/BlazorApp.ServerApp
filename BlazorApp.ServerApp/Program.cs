@@ -1,3 +1,4 @@
+using BlazorApp.Logic.DataStorage;
 using BlazorApp.Logic.Entities;
 using BlazorApp.Logic.Interfaces;
 using BlazorApp.Logic.Models;
@@ -18,6 +19,16 @@ builder.Services.AddSingleton<IPasswordHasher<Client>, PasswordHasher<Client>>()
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var client = UsersStorage.Clients.FirstOrDefault();//set password
+    if (client != null)
+    {
+        PasswordHasher<Client> _passwordHasher = new PasswordHasher<Client>();
+        var passworhasher = _passwordHasher.HashPassword(client, "admin");
+        client.PasswordHash = passworhasher;
+    }
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

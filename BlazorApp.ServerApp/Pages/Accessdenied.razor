@@ -1,0 +1,25 @@
+﻿@page "/accessdenied"
+@inject NavigationManager NavigationManager
+
+<PageTitle>AccessDenied</PageTitle>
+
+<h1>Access Denied!</h1>
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://media.istockphoto.com/photos/warning-sign-picture-id184113509?k=20&m=184113509&s=612x612&w=0&h=G4sCrouZaif-bhLsgx32K5m1uVldqN6W7zBiWRa5FWs=" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Data clients</h5>
+        <p class="card-text">You are not authorized!</p>
+    </div>
+</div>
+
+<div class="form-group">
+    <button type="button" class="btn-danger" @onclick="AccountLogin" value="AccountLogin">Go to RegisterAndLogin</button>
+</div>
+
+@code {
+    public void AccountLogin()
+    {
+        NavigationManager.NavigateTo("/account");
+    }
+}

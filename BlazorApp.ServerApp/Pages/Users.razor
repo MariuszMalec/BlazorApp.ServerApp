@@ -1,8 +1,10 @@
 ﻿@page "/users"
 @using BlazorApp.Logic
+@using BlazorApp.Logic.Entities
+@using BlazorApp.Logic.Repositories
 @using BlazorApp.Logic.Services;
 @using BlazorApp.Logic.Interfaces;
-@inject IPersonService UserService
+@inject IRepository<User> UserService
 
 <h3>Users</h3>
 

@@ -1,6 +1,7 @@
 ﻿@page "/clientdetails"
 @using BlazorApp.Logic
 @using BlazorApp.Logic.Entities;
+@using BlazorApp.Logic.Models
 @using BlazorApp.Logic.Repositories
 @using BlazorApp.Logic.Services;
 @using BlazorApp.Logic.Interfaces;
@@ -11,9 +12,9 @@
 <p>Blazor CRUD operation</p>
 <div class="row">
     <div class="col-md-6">
-        <a href='/user/add' class="btn btn-primary" role="button">
+        <a href='/client/add' class="btn btn-primary" role="button">
             <i class="fas fa-user-plus"></i>
-            Add User
+            Add Client
         </a>
     </div>
     <div class="input-group col">
@@ -42,6 +43,8 @@ else
                 <th>ID</th>
                 <th>LastName</th>
                 <th>E-mail</th>
+                <th>DataOfBirth</th>
+                <th>Nationality</th>
             </tr>
         </thead>
         <tbody>
@@ -51,11 +54,13 @@ else
                     <td>@user.Id</td>
                     <td>@user.LastName</td>
                     <td>@user.Email</td>
+                    <td>@user.DataOfBirth</td>
+                    <td>@user.Nationality</td>
                     <td>
-                        <a href='/user/edit/@user.Id' class="btn btn-outline-dark" role="button">
+                        <a href='/client/edit/@user.Id' class="btn btn-outline-dark" role="button">
                             Edit
                         </a>
-                        <a href='/user/delete/@user.Id' class="btn btn-outline-danger" role="button">
+                        <a href='/client/delete/@user.Id' class="btn btn-outline-danger" role="button">
                             Delete
                         </a>
                     </td>
@@ -66,9 +71,9 @@ else
     </table>
 }
 @code {
-    protected List<Client> userList = new();
-    protected List<Client> searchUserData = new();
-    protected Client user = new();
+    protected List<ClientDto> userList = new();
+    protected List<ClientDto> searchUserData = new();
+    protected ClientDto user = new();
     protected string SearchString { get; set; } = string.Empty;
     protected override async Task OnInitializedAsync()
     {
@@ -76,7 +81,18 @@ else
     }
     protected void GetUser()
     {
-        userList = UsersStorage.Clients.ToList();
+        var clients = UsersStorage.Clients.ToList();
+        //mapowanie
+        foreach (var client in clients)
+        {
+            userList.Add(new ClientDto() {
+                Id=client.Id, 
+                LastName = client.LastName, 
+                Email = client.Email,
+                DataOfBirth=client.DataOfBirth,
+                Nationality=client.Nationality
+            });
+        }
         searchUserData = userList;
 
     }
