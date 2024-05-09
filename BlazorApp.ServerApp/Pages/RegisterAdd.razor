@@ -67,12 +67,16 @@
         else
         {
             //UserService.Create(user);
-            AccountService.Register(client);
+            var success = AccountService.Register(client);
+            if (success.Result)
+            {
+                NavigationManager.NavigateTo("/success");
+            }
         }
-        Cancel();
+        //Cancel();
     }
     public void Cancel()
     {
-        NavigationManager.NavigateTo("/clientdetails");
+        NavigationManager.NavigateTo("/account");
     }
 }

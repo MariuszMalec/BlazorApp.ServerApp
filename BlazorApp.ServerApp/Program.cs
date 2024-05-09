@@ -1,6 +1,7 @@
 using BlazorApp.Logic.Entities;
 using BlazorApp.Logic.Interfaces;
 using BlazorApp.Logic.Models;
+using BlazorApp.Logic.Repositories;
 using BlazorApp.Logic.Services;
 using BlazorApp.ServerApp.Data;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddSingleton<IPersonService, UserService>();
+builder.Services.AddTransient<IRepository<User>, UserService>();
 builder.Services.AddSingleton<IAccountService, AccountService>();
 builder.Services.AddSingleton<IPasswordHasher<Client>, PasswordHasher<Client>>();//uzyjemy tego do hashowania hasel
 

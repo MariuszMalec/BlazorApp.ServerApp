@@ -4,6 +4,6 @@ namespace BlazorApp.Logic.Interfaces
 {
     public interface IAccountService
     {
-        Task Register(RegisterClientDto userDto);
+        Task<bool> Register(RegisterClientDto userDto);
     }
 }

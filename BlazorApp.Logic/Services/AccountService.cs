@@ -15,7 +15,7 @@ namespace BlazorApp.Logic.Services
             _passwordHasher = passwordHasher;
         }
 
-        public async Task Register(RegisterClientDto userDto)
+        public async Task<bool> Register(RegisterClientDto userDto)
         {
             var newUser = new Client()
             {
@@ -30,6 +30,9 @@ namespace BlazorApp.Logic.Services
             var hashedPassword = _passwordHasher.HashPassword(newUser, userDto.Password);
             newUser.PasswordHash = hashedPassword;
             UsersStorage.Clients.Add(newUser);
+            if (newUser != null)
+                return true;
+            return false;
         }
     }
 }

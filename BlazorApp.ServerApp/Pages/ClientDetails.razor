@@ -1,10 +1,11 @@
 ﻿@page "/clientdetails"
 @using BlazorApp.Logic
 @using BlazorApp.Logic.Entities;
+@using BlazorApp.Logic.Repositories
 @using BlazorApp.Logic.Services;
 @using BlazorApp.Logic.Interfaces;
 @using BlazorApp.Logic.DataStorage;
-@inject IPersonService UserService
+@inject IRepository<User> UserService
 @*@inject HttpClient Http*@
 <h1>Client Data</h1>
 <p>Blazor CRUD operation</p>

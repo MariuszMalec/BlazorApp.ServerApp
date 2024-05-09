@@ -1,0 +1,17 @@
+﻿@page "/success"
+@inject NavigationManager NavigationManager
+
+<PageTitle>Register sucessful</PageTitle>
+
+<h1>You are registered successful</h1>
+
+<div class="form-group">
+    <button type="button" class="btn btn-dark" @onclick="AccountLogin" value="AccountLogin">Go to RegisterAndLogin</button>
+</div>
+
+@code {
+    public void AccountLogin()
+    {
+        NavigationManager.NavigateTo("/account");
+    }
+}

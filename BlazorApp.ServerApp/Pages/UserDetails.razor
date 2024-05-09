@@ -1,9 +1,10 @@
 ﻿@page "/userdetails"
 @using BlazorApp.Logic
 @using BlazorApp.Logic.Entities;
+@using BlazorApp.Logic.Repositories
 @using BlazorApp.Logic.Services;
 @using BlazorApp.Logic.Interfaces;
-@inject IPersonService UserService
+@inject IRepository<User> UserService
 @*@inject HttpClient Http*@
 <h1>User Data</h1>
 <p>Blazor CRUD operation</p>

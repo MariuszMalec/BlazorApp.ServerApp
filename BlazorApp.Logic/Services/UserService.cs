@@ -1,10 +1,10 @@
 ﻿using BlazorApp.Logic.DataStorage;
 using BlazorApp.Logic.Entities;
-using BlazorApp.Logic.Interfaces;
+using BlazorApp.Logic.Repositories;
 
 namespace BlazorApp.Logic.Services
 {
-    public class UserService : IPersonService
+    public class UserService : IRepository<User>
     {
         public IEnumerable<User> GetAll()
         {
